@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+
+<head>
+  <title>Add button</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/master.css">
+  <link rel="stylesheet" href="/static/css/addButton.css">
+  <script src="/static/js/main.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+  <div class="addGroup">
+    <h1>Add button</h1> <button class="return" onclick="script: document.location.href='/'">Return</button>
+  </div>
+  {% if control[0] %}
+    {% include 'uix/select.html' %}
+  {% elif control[1] %}
+    {% include 'uix/mouse.html' %}
+  {% elif control[2] %}
+    {% include 'uix/keyboard.html' %}
+  {% elif control[3] %}
+    {% include 'uix/keyboard.html' %}
+  {% elif control[4] %}
+    {% include 'uix/screenshot.html' %}
+  {% endif %}
+</body>

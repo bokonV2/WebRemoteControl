@@ -1,0 +1,85 @@
+*, *:before, *:after {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: white;
+}
+
+a {
+  padding: 5px;
+}
+
+.addGroup {
+  background-color: #3700B2 !important;
+  color: white;
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.gruop {
+  background-color: #6300EF;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+.controls {
+  padding: 5px 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gr {
+  border-radius: 12px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.addButton {
+  font-size: 1.2em;
+  width: 50vw;
+}
+
+.content {
+  box-shadow: 0px 0px 14px -3px #3b3b3b;
+  background-color: white;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.content a {
+  font-size: 2em;
+  flex-grow: 1;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 6px #3b3b3b;
+  color: #000000;
+  font-size: 20px;
+  padding: 9px;
+  text-decoration: none;
+}
+
+.cell {
+  text-align: center;
+}
