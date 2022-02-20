@@ -21,21 +21,21 @@ a {
 .addGroup {
   background-color: #3700B2 !important;
   color: white;
-  width: 100%;
   padding: 5px 0;
+  width: 100vw;
   display: flex;
   justify-content: center;
 }
 
 .gruop {
-  background-color: #6300EF;
+  background-color: white;
   width: 100%;
-  height: 100%;
   margin-bottom: 10px;
 }
 
 .controls {
   padding: 5px 5px;
+  background-color: #6300EF;
   color: white;
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@ a {
 
 .gr {
   border-radius: 12px;
-  color: #000000;
+  color: black;
   font-size: 12px;
   font-weight: bold;
   padding: 5px;
@@ -81,5 +81,16 @@ a {
 }
 
 .cell {
+  text-align: center;
+}
+
+#errConnect{
+  position: fixed;
+  bottom: 10px;
+  width: 80vw;
+  background-color: #d24d57;
+  color: black;
+  font-size: 1.7em;
+  font-weight: bold;
   text-align: center;
 }

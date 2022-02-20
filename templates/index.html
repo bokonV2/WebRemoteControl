@@ -6,53 +6,35 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/master.css">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script> -->
+  <script src="/static/js/socketio.js" charset="utf-8"></script>
   <script src="/static/js/main.js" charset="utf-8"></script>
 </head>
 
 <body>
-  <div class=" addGroup gruop ">
+  <div class="addGroup gruop">
     <button type="button" class="gr addButton"onclick="script: document.location.href='/addGroup'">Add group</button>
   </div>
-  <div class="gruop">
-    <div class="controls">
-      <h3>Name Group</h3>
-      <div class="butControl">
-        <button type="button" class="gr" onclick="addButton(0)">Add button</button>
-        <button type="button" class="gr" onclick="script: document.location.href='/removeGr/0'">Remove</button>
-        <button id="b0" type="button" class="gr" onclick="openClouse(0)">Close</button>
+  {% for grID, group in groups.items() %}
+    <div class="gruop">
+      <div class="controls">
+        <h3>{{ group[0] }}</h3>
+        <div class="butControl">
+          <button type="button" class="gr" onclick="script: document.location.href='/addButton/{{ grID }}/0/0'")>Add button</button>
+          <button type="button" class="gr" onclick="removeGroup({{ grID }})">Remove</button>
+          <button id="b{{ grID }}" type="button" class="gr" onclick="openClouse({{ grID }})">Close</button>
+        </div>
+      </div>
+      <div id="{{ grID }}" class="content">
+        {% for button in group[1] %}
+        <a href="#" onclick="buttonPress({{ button.id }})" style="width: auto">
+          <div class="cell">{{ button.name }}</div>
+        </a>
+        {% endfor %}
       </div>
     </div>
-    <div id="0" class="content">
-      {% for _ in range(8) %}
-      {% for but in buttons %}
-      <a href="{{ but[0] }}" style="width: auto">
-        <div class="cell">{{ but[1] }}</div>
-      </a>
-      {% endfor %}
-      {% endfor %}
-      </table>
-    </div>
-  </div>
-  <div class="gruop">
-    <div class="controls">
-      <h3>Name Group</h3>
-      <div class="butControl">
-        <button type="button" class="gr" onclick="addButton(1)">Add button</button>
-        <button type="button" class="gr"onclick="script: document.location.href='/removeGr/1'">Remove</button>
-        <button id="b1" type="button" class="gr" onclick="openClouse(1)">Close</button>
-      </div>
-    </div>
-    <div id="1" class="content">
-      {% for _ in range(11) %}
-      {% for but in buttons %}
-      <a href="{{ but[0] }}" style="width: auto">
-        <div class="cell">{{ but[1] }}</div>
-      </a>
-      {% endfor %}
-      {% endfor %}
-      </table>
-    </div>
-  </div>
+  {% endfor %}
+  <div id="errConnect" style="display: block;">Connect error<br>reconnecting</div>
 </body>
 
 </html>

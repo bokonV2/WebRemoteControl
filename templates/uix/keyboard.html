@@ -1,11 +1,11 @@
 <div class="main">
   <label>Name:<br>
-    <input type="text" class="css-input" name="name" value="" />
+    <input type="text" class="css-input" name="name" id="name" value="" />
   </label>
   <label>Text, hotkey or key:<br>
-    <textarea type="text" class="css-input" name="text" value=""></textarea>
+    <textarea type="text" class="css-input" name="text" id="text" value=""></textarea>
   </label>
   <div class="next">
-    <button class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button>
+    <button onclick="addButtonK({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button>
   </div>
 </div>

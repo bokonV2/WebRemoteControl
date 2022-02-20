@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/master.css">
   <link rel="stylesheet" href="/static/css/addButton.css">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script> -->
+  <script src="/static/js/socketio.js" charset="utf-8"></script>
   <script src="/static/js/main.js" charset="utf-8"></script>
-
 </head>
 
 <body>
@@ -26,4 +27,5 @@
   {% elif control[4] %}
     {% include 'uix/screenshot.html' %}
   {% endif %}
+  <div id="errConnect" style="display: block;">Connect error<br>reconnecting</div>
 </body>

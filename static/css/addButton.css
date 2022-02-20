@@ -59,12 +59,19 @@
 
 label {
   margin-top: 10px;
+  width: 100%;
 }
 
 .next {
   position: absolute;
   bottom: 10px;
   right: auto;
+}
+
+#X, #Y{
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* Keyboard */
