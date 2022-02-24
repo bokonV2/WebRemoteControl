@@ -1,0 +1,76 @@
+<div class="main" id="user_form">
+  <label>Name:<br>
+    <input type="text" class="css-input" name="name" id="name" value="" />
+  </label>
+  <label>Mode:<br></label>
+    <div class="form_radio_group">
+      <div class="form_radio_group-item">
+        <input onclick="mmove(0)" id="mode-1" type="radio" name="mode" value=0 checked>
+        <label for="mode-1">Move</label>
+      </div>
+      <div class="form_radio_group-item">
+        <input onclick="mmove(1)" id="mode-2" type="radio" name="mode" value=1>
+        <label for="mode-2">Drug</label>
+      </div>
+    </div>
+  <label>Button:<br></label>
+    <div class="form_radio_group">
+      <div class="form_radio_group-item">
+        <input id="button-1" type="radio" name="button" value="right" checked disabled>
+        <label for="button-1">Left</label>
+      </div>
+      <div class="form_radio_group-item">
+        <input id="button-2" type="radio" name="button" value="middle" disabled>
+        <label for="button-2">Middle</label>
+      </div>
+      <div class="form_radio_group-item">
+        <input id="button-3" type="radio" name="button" value="right" disabled>
+        <label for="button-3">Right</label>
+      </div>
+    </div>
+  <label>Move:<br></label>
+    <div class="form_radio_group">
+      <div class="form_radio_group-item">
+        <input id="move-1" type="radio" name="move" value=0 checked>
+        <label for="move-1">To</label>
+      </div>
+      <div class="form_radio_group-item">
+        <input id="move-2" type="radio" name="move" value=1>
+        <label for="move-2">Relative</label>
+      </div>
+    </div>
+  <label>X:<br>
+    <input type="text" class="css-input" name="x" id="x" value="" />
+  </label>
+  <label>Y:<br>
+    <input type="text" class="css-input" name="y" id="y" value="" />
+  </label>
+  <label>Duration:<br>
+    <input type="number" class="css-input" name="duration" id="duration" value="0.0" />
+  </label>
+  <div id="X">x</div>
+  <div id="Y">y</div>
+  <div class="example">
+    Example:
+    <ul>
+      <li>X: 546, Y: 546</li>
+      <li>X: None, Y: None</li>
+    </ul>
+  </div>
+  <div class="next">
+    <button onclick="doForm({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button>
+    <!-- <button onclick="addButtonM({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button> -->
+  </div>
+
+</div>
+<script type="text/javascript" charset="utf-8">
+    var cords = io('http://' + document.domain + ':' + location.port + '/cords');
+
+    cords.on('connect', function() {
+      console.log("connect on cords")
+    });
+    cords.on('newnumber', function(data){
+      document.getElementById("X").innerHTML = "X: " + data.number[0];
+      document.getElementById("Y").innerHTML = "Y: " + data.number[1];
+    });
+</script>

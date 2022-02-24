@@ -5,15 +5,15 @@ from threading import Thread
 import pyautogui
 
 from utilsDB import *
+from handler import *
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-app.config['DEBUG'] = False
+app.config['DEBUG'] = True
 # gevent, threading
 socketio = SocketIO(app, async_mode='gevent', ping_timeout=30)
 thread = Thread()
-
 
 class RandomThread(Thread):
     def __init__(self):
@@ -24,7 +24,7 @@ class RandomThread(Thread):
         while not self.event:
             socketio.emit(
                 'newnumber',
-                {'number': pyautogui.position()},
+                {'number': getCords()},
                 namespace='/cords'
             )
             socketio.sleep(.2)
@@ -40,7 +40,7 @@ def index():
 
 @app.route('/addButton/<int:id>/<int:step>/<int:type>')
 def addButton(id, step, type=0):
-    control = [0, 0, 0, 0, 0]
+    control = [0, 0, 0, 0, 0, 0, 0]
     control[step] = 1
     return render_template('addButton.html', id=id, type=type, control=control)
 
@@ -52,7 +52,12 @@ def addGroup():
 
 @socketio.on('handler')
 def handler(id):
-    print(id)
+    handl(id)
+
+
+@socketio.on('removeBtn')
+def removeBtn(id):
+    removeButton(id)
 
 
 @socketio.on('removeGroup')
@@ -76,9 +81,7 @@ def stop(data):
 
 
 @socketio.on('connect')
-def connect(environ):
-    print(environ)
-    print(request.sid)
+def connect():
     print("connect")
 
 
@@ -108,4 +111,4 @@ def test_disconnect():
 if __name__ == '__main__':
     # app.run(host='0.0.0.0', port=5000, debug=True)
     socketio.run(app, host='0.0.0.0', port=5000,
-                 debug=False, use_reloader=False)
+                 debug=True, use_reloader=False)

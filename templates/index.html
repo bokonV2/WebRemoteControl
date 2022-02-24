@@ -18,9 +18,10 @@
   {% for grID, group in groups.items() %}
     <div class="gruop">
       <div class="controls">
-        <h3>{{ group[0] }}</h3>
+        <h4>{{ group[0] }}</h4>
         <div class="butControl">
-          <button type="button" class="gr" onclick="script: document.location.href='/addButton/{{ grID }}/0/0'")>Add button</button>
+          <button type="button" class="gr" onclick="script: document.location.href='/addButton/{{ grID }}/0/0'")>Add btn</button>
+          <button id="r{{ grID }}" type="button" class="gr" onclick="removeBtn({{ grID }})">Remove btn</button>
           <button type="button" class="gr" onclick="removeGroup({{ grID }})">Remove</button>
           <button id="b{{ grID }}" type="button" class="gr" onclick="openClouse({{ grID }})">Close</button>
         </div>

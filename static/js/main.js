@@ -1,5 +1,5 @@
 var socket = io('http://' + document.domain + ':' + location.port );
-
+var mode = "handler" // or removeBtn
 function openClouse(id) {
   console.log(id)
   var content = document.getElementById(id);
@@ -8,32 +8,77 @@ function openClouse(id) {
   button.innerHTML = button.innerHTML === "Close" ? 'Open' : 'Close';
 }
 
+function removeBtn(id) {
+  console.log(id)
+  var content = document.getElementById(id);
+  var button = document.getElementById("r" + id);
+  // content.style.display = content.style.display === "none" ? 'flex' : 'none';
+  button.innerHTML = button.innerHTML === "Cancel" ? 'Remove btn' : 'Cancel';
+  if (button.innerHTML === "Cancel"){
+    content.style.backgroundColor = "red";
+    mode = "removeBtn";
+  }else{
+    content.style.backgroundColor = "white";
+    mode = "handler";
+  }
+}
+
+function mmove(sw){
+  var radio=document.getElementsByName("button");
+   var len=radio.length;
+
+  if (sw == 0) {
+    for(var i=0;i<len;i++)
+    {
+        radio[i].disabled=true;
+    }
+  } else {
+    for(var i=0;i<len;i++)
+    {
+        radio[i].disabled=false;
+    }
+  }
+}
+
+function kpress(sw) {
+  var radio=document.getElementsByName('presses');
+   var len=radio.length;
+
+  if (sw == 0) {
+    for(var i=0;i<len;i++)
+    {
+        radio[i].disabled=true;
+    }
+  } else {
+    for(var i=0;i<len;i++)
+    {
+        radio[i].disabled=false;
+    }
+  }
+}
+
+function doForm(group_id, type) {
+  var data = {};
+  data["group_id"] = group_id;
+  data["type"] = type;
+
+  var all = document.querySelectorAll("#user_form input, #user_form textarea, #user_form select");
+  for (let field of all) {
+    if (field.type != "submit" && field.type != "button") {
+      if (field.type=="radio" || field.type=="checkbox") {
+        if (field.checked) { data[field.name] = field.value; }
+      }
+      else { data[field.name] = field.value; }
+    }
+  }
+
+  socket.emit('addButtonOnGr', data);
+  document.location.href = "/";
+  console.log(data)
+}
+
 function removeGroup(id) {
   socket.emit('removeGroup', id);
-  document.location.href = "/";
-}
-
-function addButtonM(groupID, type) {
-  var name = document.getElementById('name').value;
-  var x = document.getElementById('x').value;
-  var y = document.getElementById('y').value;
-  var duration = document.getElementById('duration').value;
-  var data = {name:name, x:x, y:y, duration:duration, group_id:groupID, type:type};
-  socket.emit('addButtonOnGr', data);
-  document.location.href = "/";
-}
-
-function addButtonK(groupID, type) {
-  var name = document.getElementById('name').value;
-  var text = document.getElementById('text').innerHTML;
-  var data = {name:name, text:text, group_id:groupID, type:type};
-  socket.emit('addButtonOnGr', data);
-  document.location.href = "/";
-}
-function addButtonS(groupID, type) {
-  var name = document.getElementById('name').value;
-  var data = {name:name, group_id:groupID, type:type};
-  socket.emit('addButtonOnGr', data);
   document.location.href = "/";
 }
 
@@ -44,7 +89,10 @@ function addGroup() {
 }
 
 function buttonPress(id) {
-  socket.emit('handler', id);
+  socket.emit(mode, id);
+  if (mode === "removeBtn") {
+    window.location.reload();
+  }
 }
 
 socket.on('connect', function() {

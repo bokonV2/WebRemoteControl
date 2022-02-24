@@ -4,18 +4,13 @@ from models import Groups, Buttons
 def createGroup(name):
     Groups.create(name=name)
 
-def createButton(name, group_id, type, x=None, y=None, duration=None, text=None):
-    # print("add in DB")
-    # print(name, group_id, type, x, y, duration, text)
+def createButton(name, group_id, type, **kwargs):
     group = Groups.get(Groups.id == group_id)
     Buttons.create(
         name=name,
         group=group,
         type=type,
-        x=x,
-        y=y,
-        duration=duration,
-        text=text
+        **kwargs
     )
 
 def getAll():
@@ -30,3 +25,12 @@ def removeGroup(id):
     group.delete_instance()
     for button in buttons:
         button.delete_instance()
+
+def removeButton(id):
+    button = Buttons.get(Buttons.id == id)
+    button.delete_instance()
+
+def getButton(id):
+    button = Buttons.get(Buttons.id == id)
+    return button
+    # print(button.id, button.name, button.type, button.x, button.y, button.duration, button.text)

@@ -1,0 +1,42 @@
+<div class="main" id="user_form">
+    <label>Name:<br>
+      <input type="text" class="css-input" name="name" id="name" value="" />
+    </label>
+    <label>Mode:<br></label>
+    <div class="form_radio_group">
+      <div class="form_radio_group-item">
+        <input onclick="kpress(0)" id="mode-1" type="radio" name="mode" value="0" checked>
+        <label for="mode-1">Text</label>
+      </div>
+      <div class="form_radio_group-item">
+        <input onclick="kpress(0)" id="mode-2" type="radio" name="mode" value="1">
+        <label for="mode-2">Hotkey</label>
+      </div>
+      <div class="form_radio_group-item">
+        <input onclick="kpress(1)" id="mode-3" type="radio" name="mode" value="2">
+        <label for="mode-3">Press</label>
+      </div>
+    </div>
+    <label>Presses:<br>
+      <input type="text" class="css-input" name="presses" id="presses" value="1" disabled />
+    </label>
+    <label>Interval:<br>
+      <input type="text" class="css-input" name="interval" id="interval" value="0.01" />
+    </label>
+    <label>Text, hotkey or key:<br>
+      <textarea type="text" class="css-input" name="text" id="text" value=""></textarea>
+    </label>
+
+    <div class="example">
+      Example:
+      <ul>
+        <li>wd</li>
+        <li>wd</li>
+      </ul>
+    </div>
+
+  <div class="next">
+    <button onclick="doForm({{ id }}, {{ type }})" class="css-input" type="button" style="font-size: 30px;">Submit</button>
+    <!-- <button onclick="addButtonM({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button> -->
+  </div>
+</div>

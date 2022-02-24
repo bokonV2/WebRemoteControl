@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/static/css/master.css">
   <link rel="stylesheet" href="/static/css/addButton.css">
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="/static/js/socketio.js" charset="utf-8"></script>
   <script src="/static/js/main.js" charset="utf-8"></script>
 </head>
@@ -19,12 +20,14 @@
   {% if control[0] %}
     {% include 'uix/select.html' %}
   {% elif control[1] %}
-    {% include 'uix/mouse.html' %}
+    {% include 'uix/Mclick.html' %}
   {% elif control[2] %}
-    {% include 'uix/keyboard.html' %}
+    {% include 'uix/Mmove.html' %}
   {% elif control[3] %}
-    {% include 'uix/keyboard.html' %}
+    {% include 'uix/Mscroll.html' %}
   {% elif control[4] %}
+    {% include 'uix/Ktypewrite.html' %}
+  {% elif control[5] %}
     {% include 'uix/screenshot.html' %}
   {% endif %}
   <div id="errConnect" style="display: block;">Connect error<br>reconnecting</div>

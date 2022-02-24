@@ -18,13 +18,20 @@ class Buttons(BaseModel):
     type = IntegerField(null=True)
     x = IntegerField(null=True)
     y = IntegerField(null=True)
-    duration = IntegerField(null=True)
+    duration = FloatField(null=True)
     text = TextField(null=True)
+    mode = IntegerField(null=True)
+    presses = IntegerField(null=True)
+    interval = IntegerField(null=True)
+    button = TextField(null=True)
+    clicks = IntegerField(null=True)
+    move = IntegerField(null=True)
+    scroll = FloatField(null=True)
 
 
 if __name__ == '__main__':
     pass
-    # db.create_tables([Buttons, Groups])
+    db.create_tables([Buttons, Groups])
     #
     # Groups.create(name="1")
     # Groups.create(name="2")
