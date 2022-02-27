@@ -1,6 +1,6 @@
 <div class="main" id="user_form">
     <label>Name:<br>
-      <input type="text" class="css-input" name="name" id="name" value="" />
+      <input type="text" class="css-input" name="name" id="name" value="" required/>
     </label>
     <label>Mode:<br></label>
     <div class="form_radio_group">
@@ -24,14 +24,25 @@
       <input type="text" class="css-input" name="interval" id="interval" value="0.01" />
     </label>
     <label>Text, hotkey or key:<br>
-      <textarea type="text" class="css-input" name="text" id="text" value=""></textarea>
+      <textarea type="text" class="css-input" name="text" id="text" value="" required></textarea>
     </label>
 
     <div class="example">
-      Example:
+      Example to text:
       <ul>
-        <li>wd</li>
-        <li>wd</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+      </ul>
+      Example to hotkey:
+      <ul>
+        <li>ctrl z</li>
+        <li>alt f4</li>
+      </ul>
+      Example to press:
+      <ul>
+        <li>f5</li>
+        <li>a</li>
+        <li>b</li>
+        <li>enter</li>
       </ul>
     </div>
 

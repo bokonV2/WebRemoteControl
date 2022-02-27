@@ -29,6 +29,8 @@
     {% include 'uix/Ktypewrite.html' %}
   {% elif control[5] %}
     {% include 'uix/screenshot.html' %}
+  {% elif control[6] %}
+    {% include 'uix/cmd.html' %}
   {% endif %}
   <div id="errConnect" style="display: block;">Connect error<br>reconnecting</div>
 </body>

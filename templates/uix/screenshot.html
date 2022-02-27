@@ -1,7 +1,11 @@
 <div class="main" id="user_form">
   <label>Name:<br>
-    <input type="text" class="css-input" name="name" id="name" value="" />
+    <input type="text" class="css-input" name="name" id="name" value="" required/>
   </label>
+  <div class="example">
+    Notification:
+    <pre>    Screenshots are saved to the desktop</pre>
+  </div>
   <div class="next">
     <button onclick="doForm({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button>
   </div>

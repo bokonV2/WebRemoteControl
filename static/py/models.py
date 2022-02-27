@@ -1,6 +1,10 @@
 from peewee import *
+import os, sys
 
-db = SqliteDatabase("base.db")
+if getattr(sys, 'frozen', False):
+    db = SqliteDatabase(os.path.join(sys._MEIPASS, 'static/py/base.db'))
+else:
+    db = SqliteDatabase('static/py/base.db')
 
 
 class BaseModel(Model):

@@ -1,5 +1,6 @@
 var socket = io('http://' + document.domain + ':' + location.port );
 var mode = "handler" // or removeBtn
+
 function openClouse(id) {
   console.log(id)
   var content = document.getElementById(id);
@@ -71,10 +72,20 @@ function doForm(group_id, type) {
       else { data[field.name] = field.value; }
     }
   }
-
-  socket.emit('addButtonOnGr', data);
-  document.location.href = "/";
-  console.log(data)
+  var great = true;
+  for (const [key, value] of Object.entries(data)) {
+    console.log(key, value);
+    if (value === null || value === ""){
+      console.log("EMPTY")
+      great = false;
+    }
+  }
+  if (great) {
+    socket.emit('addButtonOnGr', data);
+    document.location.href = "/";
+  }else {
+    alert("Fill in all the fields")
+  }
 }
 
 function removeGroup(id) {
@@ -95,6 +106,10 @@ function buttonPress(id) {
   }
 }
 
+function stopProgramm() {
+  socket.emit("stop", "stop");
+}
+
 socket.on('connect', function() {
   console.log("connect");
   var a = document.getElementById('errConnect');
@@ -104,6 +119,12 @@ socket.on('connect', function() {
 socket.on('disconnect', function() {
   var a = document.getElementById('errConnect');
   a.style.display = a.style.display === "none" ? 'block' : 'none';
+});
+
+socket.on('error', function(data) {
+  // var a = document.getElementById('errConnect');
+  // a.style.display = a.style.display === "none" ? 'block' : 'none';
+  alert(data.data)
 });
 
 socket.on('reload', function(data){

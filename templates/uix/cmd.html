@@ -5,7 +5,15 @@
   <label>Command:<br>
     <textarea type="text" class="css-input" name="text" id="text" value=""></textarea>
   </label>
+  <div class="example">
+    Example:
+    <ul>
+      <li>start http://example.com</li>
+      <li>shutdown /s /t 0</li>
+      <li>ping example.com</li>
+    </ul>
+  </div>
   <div class="next">
-    <button onclick="addButtonK({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button>
+    <button onclick="doForm({{ id }}, {{ type }})" class="css-input" type="button" name="submit" style="font-size: 30px;">Submit</button>
   </div>
 </div>

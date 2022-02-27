@@ -1,4 +1,4 @@
-from models import Groups, Buttons
+from static.py.models import Groups, Buttons
 
 
 def createGroup(name):
@@ -16,7 +16,8 @@ def createButton(name, group_id, type, **kwargs):
 def getAll():
     rtn = {}
     for group in Groups.select():
-        rtn[group.id] = (group.name, Buttons.select().where(Buttons.group == group.id))
+        rtn[group.id] = (group.name, Buttons.select().where(
+            Buttons.group == group.id))
     return rtn
 
 def removeGroup(id):
@@ -33,4 +34,3 @@ def removeButton(id):
 def getButton(id):
     button = Buttons.get(Buttons.id == id)
     return button
-    # print(button.id, button.name, button.type, button.x, button.y, button.duration, button.text)

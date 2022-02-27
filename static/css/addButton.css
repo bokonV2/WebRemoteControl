@@ -63,7 +63,7 @@
 }
 
 .next {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: auto;
 }
@@ -121,6 +121,7 @@
 .example{
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 100px;
 }
 
 ul{
@@ -130,5 +131,5 @@ ul{
 /* Keyboard */
 textarea {
   width: 95%;
-  height: 50vw;
+  height: 40vh;
 }

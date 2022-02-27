@@ -2,7 +2,7 @@
 <html lang="ru" dir="ltr">
 
 <head>
-  <title>Remote</title>
+  <title>{{host}}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/master.css">
@@ -13,6 +13,7 @@
 
 <body>
   <div class="addGroup gruop">
+    <button type="button" class="gr addButton"onclick="stopProgramm()">Stop programm</button>
     <button type="button" class="gr addButton"onclick="script: document.location.href='/addGroup'">Add group</button>
   </div>
   {% for grID, group in groups.items() %}
